@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>benchmark.j</title>
+  </head>
+  <body>
+    <h1>Introduction</h1>
+    <p><b>benchmark.j</b> is a Java port of the Ruby benchmarking utility (available in <code>benchmark.rb</code>)
+    that makes use of system calls for retrieving user and system execution times.</p>
+    <p><b>benchmark.j</b> provides a couple of additional utility methods and doesn't completely follow the Ruby API.</p>
+    
+    <h1>Measuring jobs/code blocks</h1>
+    <p>
+      The following code show an usage example for the <code>Benchmark.measure</code> method:
+    </p>
+    <pre>
+public class MeasureTest {
+  &#64;Test
+  public void noLabelMeasure() {
+    Times t= Benchmark.measure(new DummyJob());
+    System.out.println(header(Times.CAPTION, t));
+    System.out.println(t);
+  }
+
+  &#64;Test
+  public void labeledMeasure() {
+    Times t= Benchmark.measure("labeled", new DummyJob());
+    System.out.println(t.toFullString());
+  }
+}
+    </pre>
+    <p>
+      There are a couple of things to be mentioned about the above code:
+    </p>
+    <ol>
+      <li>The method <code>measure</code> allows benchmarking a <code>Runnable</code> (and so it also support Groovy closures)</li>
+      <li>The output report can use a custom label.</li>
+      <li>The <code>measure</code> method returns a <code>Times</code> instance that contains
+      different timing information. However printing out this information is as simple as
+      invoking its <code>toString</code> or <code>toFullString</code> methods</li>
+    </ol>
+
+    
+  </body>
+</html>
