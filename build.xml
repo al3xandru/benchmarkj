@@ -1,0 +1,22 @@
+<project name="benchmark.j" default="javadocs" basedir=".">
+  <property name="src.dir" value="${basedir}/src/java" />
+
+  <target name="javadocs">
+    <mkdir dir="${basedir}/javadocs" />
+    <javadoc destdir="${basedir}/javadocs" source="1.5" windowtitle="benchmark.j" access="public">
+      <doctitle>benchmark.j</doctitle>
+      <footer>&lt;small&gt;Alex Popescu&lt;br/&gt;the_mindstorm&lt;/small&gt;</footer>
+      <bottom>
+        &lt;center&gt;
+        &lt;b&gt;benchmark.j&lt;/b&gt; is a Java port of the Ruby benchmarking support.
+        It adds a couple of utility methods on top of the Ruby benchmarking API.
+          &lt;b&gt;benchmark.j&lt;/b&gt; makes use of system calls to determine the various timings.
+        &lt;/center&gt;
+      </bottom>
+      <fileset dir="${src.dir}" defaultexcludes="yes">
+        <include name="org/mindstorms/benchmark/*.java" />
+        <include name="org/mindstorms/benchmark/time/Times.java" />
+      </fileset>
+    </javadoc>
+  </target>
+</project>
