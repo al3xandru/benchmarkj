@@ -3,22 +3,20 @@ package org.mindstorms.benchmark.groovy;
 import groovy.lang.Closure;
 import org.mindstorms.benchmark.JobExecutor;
 
-import java.util.List;
-
 /**
  * @author <a href="mailto:the.mindstorm@gmail.com">Alex Popescu</a>
  * @since Mar 1, 2008
  */
 abstract public class Benchmark extends org.mindstorms.benchmark.Benchmark {
-  public static void benchmark(Closure closure) {
+  public static void bench(Closure closure) {
     executeBenchmark(0, closure);
   }
 
-  public static void rbenchmark(Closure closure) {
+  public static void rbench(Closure closure) {
     executeBenchmark(1, closure);
   }
 
-  public static void rbenchmark(int rehersals, Closure closure) {
+  public static void rbench(int rehersals, Closure closure) {
     executeBenchmark(rehersals, closure);
   }
 

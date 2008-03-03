@@ -70,7 +70,7 @@ abstract public class Benchmark {
    * @param exec a callback that allows registering multiple tasks to be
    *  benchmarked
    */
-  public static void benchmark(Executor exec) {
+  public static void bench(Executor exec) {
     executeBenchmark(0, exec);
   }
 
@@ -83,13 +83,13 @@ abstract public class Benchmark {
    * The tasks will be executed firstly as a rehearsal, and only afterwards for
    * real timings. Both reports will be outputted.
    * <p/>
-   * See code sample: {@link #benchmark(Executor)}.
+   * See code sample: {@link #bench(Executor)}.
    *
    * @param exec a callback that allows registering multiple tasks to be
    *  benchmarked
-   * @see #rbenchmark(int, Executor) 
+   * @see #rbench(int, Executor)
    */
-  public static void rbenchmark(Executor exec) {
+  public static void rbench(Executor exec) {
     executeBenchmark(1, exec);
   }
 
@@ -103,13 +103,14 @@ abstract public class Benchmark {
    * and only afterwards for real timing. A summary report for the rehearsal timings
    * will be outputted.
    * <p/>
-   * See code sample: {@link #benchmark(Executor)}.
+   * See code sample: {@link #bench(Executor)}.
    *
    * @param exec a callback that allows registering multiple tasks to be
    *  benchmarked
-   * @see #rbenchmark(int, Executor)
+   * @param rehearsals the number of rehearsals to be executed prior to measuring
+   * @see #rbench(int, Executor)
    */
-  public static void rbenchmark(int rehearsals, Executor exec) {
+  public static void rbench(int rehearsals, Executor exec) {
     executeBenchmark(rehearsals, exec);
   }
 
@@ -117,30 +118,30 @@ abstract public class Benchmark {
   // aliases
   //
   /**
-   * Alias for {@link #benchmark(Executor)}.
+   * Alias for {@link #bench(Executor)}.
    *
-   * @see #benchmark(Executor) 
+   * @see # bench (Executor)
    */
   public static void bm(Executor exec) {
-    benchmark(exec);
+    bench(exec);
   }
 
   /**
-   * Alias for {@link #rbenchmark(Executor)}.
+   * Alias for {@link #rbench(Executor)}.
    *
-   * @see #rbenchmark(Executor) 
+   * @see # rbench (Executor)
    */
   public static void rbm(Executor exec) {
-    rbenchmark(1, exec);
+    rbench(1, exec);
   }
 
   /**
-   * Alias for {@link #rbenchmark(int, Executor)}.
+   * Alias for {@link #rbench(int, Executor)}.
    *
-   * @see #rbenchmark(int, Executor)  
+   * @see # rbench (int, Executor)
    */
   public static void rbm(int rehearsals, Executor exec) {
-    rbenchmark(rehearsals, exec);
+    rbench(rehearsals, exec);
   }
 
   private static void executeBenchmark(int rehearsals, Executor exec) {
