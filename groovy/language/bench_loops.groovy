@@ -1,6 +1,6 @@
 import org.mindstorms.benchmark.groovy.Benchmark as BM
 
-BM.benchmark {
+BM.bench {
   it.benchmark("times") { 1000000.times { it } }
   it.benchmark("upto") { 0.upto(1000000) { it } }
   it.benchmark("downto") { 1000000.downto(0) { it } }

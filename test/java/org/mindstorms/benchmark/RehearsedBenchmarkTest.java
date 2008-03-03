@@ -9,7 +9,7 @@ import org.junit.Test;
 public class RehearsedBenchmarkTest {
   @Test
   public void rbenchmark() {
-    Benchmark.rbenchmark(5, new Executor() {
+    Benchmark.rbench(5, new Executor() {
       public void execute(JobExecutor executor) {
         executor.benchmark("labbeled", new DummyJob());
         executor.benchmark(new DummyJob());

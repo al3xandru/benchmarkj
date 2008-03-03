@@ -4,6 +4,13 @@
     <facet type="Groovy" name="Groovy">
       <configuration />
     </facet>
+    <facet type="JRUBY" name="JRuby">
+      <configuration>
+        <JRUBY_FACET_CONFIG_ID NAME="JRUBY_SDK_NAME" VALUE="JRuby SDK 1.8.6" />
+        <JRUBY_FACET_CONFIG_ID NAME="SHOULD_USE_RSPEC" VALUE="false" />
+        <JRUBY_FACET_CONFIG_ID NAME="NUMBER" VALUE="0" />
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/build/classes" />
@@ -13,7 +20,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/groovy" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/test/java" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/src/java/org/mindstorms/benchmark/time/deprecated" />
     </content>
     <orderEntry type="library" name="GROOVY" level="application" />
     <orderEntry type="jdk" jdkName="1.6" jdkType="JavaSDK" />
@@ -28,6 +34,29 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="JUnit-4.x" level="application" />
+    <orderEntry type="module-library">
+      <library name="JRuby facet sdk">
+        <CLASSES>
+          <root url="file:///Applications/java/jruby-1.1RC2/lib/ruby/site_ruby/1.8" />
+          <root url="file:///Applications/java/jruby-1.1RC2/lib/ruby/site_ruby" />
+          <root url="file:///Applications/java/jruby-1.1RC2/lib/ruby/1.8" />
+          <root url="file:///Applications/java/jruby-1.1RC2/lib/ruby/gems/1.8/gems/rake-0.8.1/lib" />
+          <root url="file:///Applications/java/jruby-1.1RC2/lib/ruby/gems/1.8/gems/rspec-1.1.3/lib" />
+          <root url="file:///Applications/java/jruby-1.1RC2/lib/ruby/gems/1.8/gems/sources-0.0.1/lib" />
+          <root url="file://$MODULE_DIR$/../../../../Library/Application Support/IntelliJIDEA70beta/ruby/rubystubs" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file:///Applications/java/jruby-1.1RC2/lib/ruby/site_ruby/1.8" />
+          <root url="file:///Applications/java/jruby-1.1RC2/lib/ruby/site_ruby" />
+          <root url="file:///Applications/java/jruby-1.1RC2/lib/ruby/1.8" />
+          <root url="file:///Applications/java/jruby-1.1RC2/lib/ruby/gems/1.8/gems/rake-0.8.1/lib" />
+          <root url="file:///Applications/java/jruby-1.1RC2/lib/ruby/gems/1.8/gems/rspec-1.1.3/lib" />
+          <root url="file:///Applications/java/jruby-1.1RC2/lib/ruby/gems/1.8/gems/sources-0.0.1/lib" />
+          <root url="file://$MODULE_DIR$/../../../../Library/Application Support/IntelliJIDEA70beta/ruby/rubystubs" />
+        </SOURCES>
+      </library>
+    </orderEntry>
     <orderEntryProperties />
   </component>
 </module>
