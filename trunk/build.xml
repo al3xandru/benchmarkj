@@ -1,17 +1,86 @@
-<project name="benchmark.j" default="javadocs" basedir=".">
+<project name="benchmark.j" default="javadoc" basedir=".">
+  <property environment="ENV" />
+  <property file="local.build.properties" />
+  
+  <property name="version" value="1.0a" />
   <property name="src.dir" value="${basedir}/src/java" />
+  <property name="build.dir" value="${basedir}/z_build/classes" />
+  <property name="tmp.dir" value="${basedir}/z_build/tmp" />
+  <property name="lib.dir" value="${basedir}/lib" />
+  <property name="dist.dir" value="${basedir}/dist" />
+  <property name="jna.jar" value="${lib.dir}/jna.jar" />
+  <property name="jna.version" value="3.0.2" />
+  <property name="groovy.jar" value="${ENV.GROOVY_HOME}/lib/groovy-1.5.4.jar" />
 
-  <target name="javadocs">
+  <target name="init">
+    <mkdir dir="${build.dir}" />
+    <mkdir dir="${tmp.dir}" />
+    <mkdir dir="${dist.dir}" />
     <mkdir dir="${basedir}/javadocs" />
+  </target>
+
+  <target name="compile" depends="init">
+    <javac source="1.5" target="1.5" srcdir="${src.dir}" destdir="${build.dir}">
+      <classpath>
+        <pathelement location="${jna.jar}"/>
+        <pathelement location="${groovy.jar}" />
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="dist" depends="compile, javadoc">
+    <unzip src="${jna.jar}" dest="${tmp.dir}" />
+    <move file="${tmp.dir}/META-INF/MANIFEST.MF" tofile="${tmp.dir}/META-INF/JNA.MANIFEST.MF" />
+
+    <jar destfile="${dist.dir}/benchmark.j-all-${version}.jar">
+      <fileset dir="${build.dir}" />
+      <fileset dir="${tmp.dir}" />
+      <manifest>
+        <attribute name="Implementation-Title" value="benchmark.j" />
+        <attribute name="Implementation-Version" value="${version}" />
+        <attribute name="Implementation-Vendor" value="Alex Popescu (aka the_mindstorm)" />
+      </manifest>
+    </jar>
+    <jar destfile="${dist.dir}/benchmark.j-${version}.jar">
+      <fileset dir="${build.dir}" />
+      <manifest>
+        <attribute name="Implementation-Title" value="benchmark.j" />
+        <attribute name="Implementation-Version" value="${version}" />
+        <attribute name="Implementation-Vendor" value="Alex Popescu (aka the_mindstorm)" />
+      </manifest>
+    </jar>
+    <jar destfile="${dist.dir}/benchmark.j-src-${version}.jar">
+      <fileset dir="${src.dir}" />
+    </jar>
+    <jar destfile="${dist.dir}/benchmark.j-javadoc-${version}.jar">
+      <fileset dir="${basedir}/javadocs" />
+    </jar>
+    <tar compression="gzip" destfile="${dist.dir}/benchmark.j-${version}.tgz">
+      <fileset dir="${dist.dir}">
+        <include name="*-${version}.jar" />
+      </fileset>
+    </tar>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete includeemptydirs="true">
+      <fileset dir="${build.dir}" />
+      <fileset dir="${tmp.dir}" />
+      <fileset dir="${basedir}/javadocs" />
+    </delete>
+  </target>
+  
+  <target name="javadoc" depends="init">
     <javadoc destdir="${basedir}/javadocs" source="1.5" windowtitle="benchmark.j" access="public">
       <doctitle>benchmark.j</doctitle>
       <footer>&lt;small&gt;Alex Popescu&lt;br/&gt;the_mindstorm&lt;/small&gt;</footer>
-      <bottom>
-        &lt;center&gt;
+      <bottom><![CDATA[
+        <center>
         &lt;b&gt;benchmark.j&lt;/b&gt; is a Java port of the Ruby benchmarking support.
         It adds a couple of utility methods on top of the Ruby benchmarking API.
           &lt;b&gt;benchmark.j&lt;/b&gt; makes use of system calls to determine the various timings.
-        &lt;/center&gt;
+        </center>
+      ]]>
       </bottom>
       <fileset dir="${src.dir}" defaultexcludes="yes">
         <include name="org/mindstorms/benchmark/*.java" />
