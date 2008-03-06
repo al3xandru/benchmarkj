@@ -1,0 +1,2 @@
+# Override for local environment
+#groovy.jar=path_to_groovy.jar
