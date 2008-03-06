@@ -18,7 +18,7 @@ import java.util.Formatter;
  */
 public class Times {
   private static final long NANOS= 1000000000L;
-  public static final String CAPTION= "     user         system       total         real";
+  public static final String CAPTION= "        user       system        total          real";
   public static final String FMT= "%$12.6f %$12.6f %$12.6f (%$12.6f)";
   private static final String NL= System.getProperty("line.separator");
 
